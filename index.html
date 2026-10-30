@@ -4,221 +4,289 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="robots" content="noindex" />
-        <title>Linen &amp; Co · Chat with Nora</title>
+        <title>linen&amp;co. · Chat with Nora</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@700;800&display=swap"
+        />
+        <link rel="preload" as="image" href="images/bedroom.webp" imagesrcset="images/bedroom-768.webp 768w, images/bedroom.webp 1536w" imagesizes="100vw" />
         <style>
+            /* The shop from the handover prototype ("linen&co."): one full-bleed photo of sage linen, the same greens and
+               ivory as the widget's Ivory finish, so the page and Nora's glass panel read as one design. */
+            :root {
+                --forest: #314a3b;
+                --banner-ink: #f0f0df;
+                --ivory: #f7f6f0;
+                --ink: #23302a;
+                --muted: #667064;
+                --sage: #758969;
+                --on-photo: #fffef4;
+                --on-photo-soft: rgba(255, 254, 242, 0.8);
+                --serif: Georgia, "Times New Roman", serif;
+                --sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+                --brand: Manrope, ui-sans-serif, system-ui, sans-serif;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                height: 100%;
+            }
             body {
                 margin: 0;
-                background: #fff;
-                color: #1f1d1a;
-                font: 15px/1.55 Manrope, ui-sans-serif, system-ui, sans-serif;
-            }
-            .wrap {
-                max-width: 1120px;
-                margin: 0 auto;
-                padding: 0 16px;
-            }
-            .topbar {
-                background: #1f1d1a;
-                color: #fff;
-                padding: 8px 16px;
-                text-align: center;
-                font-size: 13px;
-            }
-            header {
-                border-bottom: 1px solid #e8e5de;
-            }
-            header .wrap {
                 display: flex;
-                height: 64px;
-                align-items: center;
-                justify-content: space-between;
-                gap: 20px;
+                flex-direction: column;
+                background: var(--ivory);
+                color: var(--ink);
+                font: 15px/1.55 var(--sans);
+                -webkit-font-smoothing: antialiased;
             }
-            .logo {
-                font-size: 20px;
-                font-weight: 700;
-                letter-spacing: -0.025em;
-            }
-            .logo span,
-            .points li::before {
-                color: #2f6b5e;
-            }
-            nav {
-                display: none;
-                gap: 24px;
-                font-size: 14px;
-                font-weight: 600;
-            }
-            .tools {
+            .banner {
+                position: relative;
                 display: flex;
-                gap: 16px;
-                font-size: 14px;
-            }
-            main {
-                display: grid;
-                gap: 24px;
-                padding-top: 20px;
-                padding-bottom: 144px;
-            }
-            .photo {
-                aspect-ratio: 4 / 5;
-                border-radius: 14px;
-                background:
-                    linear-gradient(
-                        118deg,
-                        rgba(255, 255, 255, 0.2) 0 16%,
-                        transparent 16% 38%,
-                        rgba(0, 0, 0, 0.07) 38% 45%,
-                        transparent 45% 68%,
-                        rgba(255, 255, 255, 0.14) 68% 75%,
-                        transparent 75%
-                    ),
-                    linear-gradient(160deg, #a9bcb5, #dfe5e1);
-            }
-            .muted {
-                color: #66625a;
-                font-size: 13px;
-            }
-            h1 {
-                margin: 8px 0 10px;
-                font-size: 28px;
-                line-height: 1.25;
-                letter-spacing: -0.025em;
-            }
-            .price {
-                margin: 0;
-                font-size: 22px;
-                font-weight: 700;
-            }
-            .price small {
-                margin-left: 4px;
-                font-weight: 500;
-            }
-            .desc {
-                max-width: 60ch;
-                margin: 0 0 24px;
-                color: #3b3833;
-            }
-            .label {
-                margin: 0 0 8px;
-                font-size: 13px;
-                font-weight: 700;
-            }
-            .sizes {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px;
-                margin-bottom: 20px;
-            }
-            .sizes span {
-                border: 1px solid #e8e5de;
-                border-radius: 999px;
-                padding: 8px 14px;
-                font-size: 14px;
-            }
-            .sizes .on {
-                border-color: #1f1d1a;
-                box-shadow: inset 0 0 0 1px #1f1d1a;
-            }
-            .add {
-                display: flex;
-                height: 52px;
-                max-width: 420px;
                 align-items: center;
                 justify-content: center;
-                border-radius: 999px;
-                background: #2f6b5e;
-                color: #fff;
-                font-weight: 700;
+                height: 36px;
+                padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
+                background: var(--forest);
+                color: var(--banner-ink);
+                font-size: 12px;
+                letter-spacing: 0.02em;
             }
-            .points {
-                display: grid;
-                gap: 8px;
-                margin: 24px 0 0;
-                padding: 0;
-                list-style: none;
-                color: #3b3833;
-                font-size: 14px;
+            .banner span {
+                position: absolute;
+                right: max(28px, env(safe-area-inset-right, 0px));
+                opacity: 0.6;
             }
-            .points li {
+            header {
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                justify-content: space-between;
+                gap: 24px;
+                height: 72px;
+                padding: 0 max(20px, env(safe-area-inset-right, 0px)) 0 max(20px, env(safe-area-inset-left, 0px));
+                background: var(--ivory);
             }
-            .points li::before {
+            .logo {
+                font: 800 28px/1 var(--brand);
+                letter-spacing: -1.5px;
+            }
+            .logo span {
+                color: var(--sage);
+            }
+            nav {
+                display: flex;
+                gap: 32px;
+                color: var(--muted);
+                font-size: 14px;
+            }
+            .bag {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                color: var(--ink);
+                font-size: 14px;
+            }
+            .hero {
+                position: relative;
+                flex: 1;
+                min-height: 560px;
+                overflow: hidden;
+                color: var(--on-photo);
+            }
+            .hero img {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center 58%;
+            }
+            /* Darker on the left, where the words stand on the photo. */
+            .hero::after {
                 content: "";
-                width: 6px;
-                height: 6px;
-                flex-shrink: 0;
-                border-radius: 50%;
-                background: currentColor;
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(90deg, rgba(18, 41, 28, 0.42), rgba(18, 41, 28, 0.12) 46%, transparent 64%);
             }
-            footer {
-                padding-bottom: 32px;
-                color: #66625a;
+            .details {
+                position: relative;
+                z-index: 1;
+                width: min(46%, 560px);
+                padding: clamp(36px, 6vh, 72px) clamp(24px, 4.4vw, 72px);
+                text-shadow: 0 1px 15px rgba(18, 41, 28, 0.35);
+            }
+            .eyebrow {
+                font-size: 11px;
+                letter-spacing: 2.2px;
+                color: rgba(255, 252, 226, 0.78);
+            }
+            h1 {
+                margin: 20px 0 22px;
+                font: 400 clamp(44px, 5.2vw, 76px)/1.02 var(--serif);
+                letter-spacing: -1.7px;
+                text-wrap: balance;
+            }
+            .name {
+                margin: 0 0 6px;
+                font-size: 15px;
+                color: var(--on-photo-soft);
+            }
+            .meta {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: baseline;
+                gap: 6px 18px;
+                margin: 0 0 18px;
+                font-size: 16px;
+            }
+            .meta small {
+                color: rgba(255, 254, 242, 0.72);
                 font-size: 13px;
             }
-            @media (min-width: 768px) {
-                nav {
-                    display: flex;
+            .description {
+                max-width: 38ch;
+                margin: 0 0 28px;
+                color: var(--on-photo-soft);
+            }
+            .add {
+                display: inline-flex;
+                align-items: center;
+                gap: 28px;
+                height: 48px;
+                padding: 0 22px 0 26px;
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.14);
+                -webkit-backdrop-filter: blur(12px);
+                backdrop-filter: blur(12px);
+                color: var(--on-photo);
+                font: 500 14px/1 var(--sans);
+                text-shadow: none;
+            }
+            .benefits {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px 22px;
+                margin-top: 22px;
+                color: rgba(255, 254, 242, 0.78);
+                font-size: 13px;
+            }
+            .tag {
+                position: absolute;
+                z-index: 1;
+                left: clamp(24px, 4.4vw, 72px);
+                bottom: 44px;
+                font: italic 400 26px/1.2 var(--serif);
+                text-shadow: 0 1px 12px rgba(18, 41, 28, 0.4);
+            }
+            .dots {
+                position: absolute;
+                z-index: 1;
+                left: clamp(24px, 4.4vw, 72px);
+                bottom: 26px;
+                display: flex;
+                gap: 6px;
+            }
+            .dots span {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.45);
+            }
+            .dots span:first-child {
+                width: 22px;
+                border-radius: 3px;
+                background: #fff;
+            }
+            footer {
+                padding: 10px max(20px, env(safe-area-inset-left, 0px)) calc(10px + env(safe-area-inset-bottom, 0px));
+                color: var(--muted);
+                font-size: 12px;
+            }
+            @media (max-width: 1023px) {
+                .details {
+                    width: min(62%, 520px);
                 }
-                main {
-                    grid-template-columns: 1.1fr 1fr;
-                    gap: 48px;
-                    padding-top: 32px;
+            }
+            /* On a phone the words take the top of the photo and the widget the bottom. */
+            @media (max-width: 640px) {
+                .banner span,
+                nav {
+                    display: none;
+                }
+                header {
+                    height: 60px;
+                }
+                .logo {
+                    font-size: 24px;
+                }
+                .hero {
+                    min-height: 0;
+                }
+                .hero::after {
+                    background: linear-gradient(180deg, rgba(18, 41, 28, 0.45), rgba(18, 41, 28, 0.08) 55%, transparent 75%);
+                }
+                .details {
+                    width: 100%;
+                    padding: 28px 22px;
                 }
                 h1 {
-                    font-size: 34px;
+                    font-size: 42px;
+                    margin: 14px 0 16px;
+                }
+                .description,
+                .benefits,
+                .tag,
+                .dots {
+                    display: none;
                 }
             }
         </style>
     </head>
     <body>
-        <div class="topbar">Free delivery over €50 · Order before 10 pm, delivered tomorrow</div>
+        <div class="banner">A little softer. A little slower. <span>Free delivery over €50</span></div>
         <header>
-            <div class="wrap">
-                <span class="logo">Linen <span>&amp;</span> Co</span>
-                <nav aria-label="Shop">
-                    <span>Bedding</span>
-                    <span>Bath</span>
-                    <span>Table</span>
-                    <span>Sale</span>
-                </nav>
-                <div class="tools">
-                    <span>Search</span>
-                    <span>Bag (0)</span>
-                </div>
-            </div>
+            <span class="logo">linen<span>&amp;</span>co.</span>
+            <nav aria-label="Shop">
+                <span>Bedding</span>
+                <span>Bath</span>
+                <span>Our story</span>
+            </nav>
+            <span class="bag">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 8h12l-1 12H7L6 8Z" />
+                    <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+                </svg>
+                0
+            </span>
         </header>
-        <main class="wrap">
-            <div class="photo" role="img" aria-label="Sage green linen duvet cover on a bed"></div>
-            <div>
-                <p class="muted" style="margin: 0">Bedding / Duvet covers</p>
-                <h1>Sage green linen duvet cover</h1>
-                <p class="price">€129 <small class="muted">incl. VAT</small></p>
-                <p class="muted" style="margin: 6px 0 20px">4.8 out of 5 · 312 reviews</p>
-                <p class="desc">
-                    Stonewashed European flax that feels soft from the very first night. It breathes in summer, keeps
-                    you warm in winter and gets softer with every wash.
+        <main class="hero">
+            <img
+                src="images/bedroom.webp"
+                srcset="images/bedroom-768.webp 768w, images/bedroom.webp 1536w"
+                sizes="100vw"
+                alt="A sage green linen duvet cover on a bed in a warm bedroom"
+            />
+            <div class="details">
+                <span class="eyebrow">THE LINEN COLLECTION / 001</span>
+                <h1>Your softer<br />side of life.</h1>
+                <p class="name">European linen duvet cover</p>
+                <p class="meta"><span>€129</span><span>★★★★★ <small>4.8 · 312 reviews</small></span></p>
+                <p class="description">
+                    Beautifully breathable. Naturally effortless. Discover the everyday luxury of stonewashed European
+                    flax.
                 </p>
-                <p class="label">Size</p>
-                <div class="sizes">
-                    <span>140 × 200</span>
-                    <span class="on">200 × 200</span>
-                    <span>240 × 220</span>
-                </div>
-                <span class="add">Add to bag</span>
-                <ul class="points">
-                    <li>Order before 10 pm, delivered tomorrow</li>
-                    <li>Free returns within 30 days</li>
-                    <li>Machine washable at 40°C</li>
-                </ul>
+                <span class="add">Add to bag <span aria-hidden="true">↗</span></span>
+                <div class="benefits"><span>↺ 30-day returns</span><span>◌ Responsibly made</span></div>
             </div>
+            <span class="tag">Made for slow mornings.</span>
+            <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
         </main>
-        <footer class="wrap">Linen &amp; Co is a demo store for Neople Chat.</footer>
+        <footer>linen&amp;co. is a demo store for Neople Chat.</footer>
         <!-- Neople Chat, as a customer puts it on their own site: one script tag from the widget's admin page. -->
         <script src="https://chat.endpoints.neople-chat.cloud.goog/v1/widget.js" data-widget="wk_-61FJ5waTxa6DfnunDwoNt" async></script>
     </body>
