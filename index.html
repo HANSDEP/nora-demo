@@ -11,85 +11,11 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@700;800&display=swap"
         />
+        <link rel="stylesheet" href="shop.css" />
         <link rel="preload" as="image" href="images/bedroom.webp" imagesrcset="images/bedroom-768.webp 768w, images/bedroom.webp 1536w" imagesizes="100vw" />
         <style>
             /* The shop from the handover prototype ("linen&co."): one full-bleed photo of sage linen, the same greens and
                ivory as the widget's Ivory finish, so the page and Nora's glass panel read as one design. */
-            :root {
-                --forest: #314a3b;
-                --banner-ink: #f0f0df;
-                --ivory: #f7f6f0;
-                --ink: #23302a;
-                --muted: #667064;
-                --sage: #758969;
-                --on-photo: #fffef4;
-                --on-photo-soft: rgba(255, 254, 242, 0.8);
-                --serif: Georgia, "Times New Roman", serif;
-                --sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
-                --brand: Manrope, ui-sans-serif, system-ui, sans-serif;
-            }
-            * {
-                box-sizing: border-box;
-            }
-            html,
-            body {
-                height: 100%;
-            }
-            body {
-                margin: 0;
-                display: flex;
-                flex-direction: column;
-                background: var(--ivory);
-                color: var(--ink);
-                font: 15px/1.55 var(--sans);
-                -webkit-font-smoothing: antialiased;
-            }
-            .banner {
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 36px;
-                padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
-                background: var(--forest);
-                color: var(--banner-ink);
-                font-size: 12px;
-                letter-spacing: 0.02em;
-            }
-            .banner span {
-                position: absolute;
-                right: max(28px, env(safe-area-inset-right, 0px));
-                opacity: 0.6;
-            }
-            header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 24px;
-                height: 72px;
-                padding: 0 max(20px, env(safe-area-inset-right, 0px)) 0 max(20px, env(safe-area-inset-left, 0px));
-                background: var(--ivory);
-            }
-            .logo {
-                font: 800 28px/1 var(--brand);
-                letter-spacing: -1.5px;
-            }
-            .logo span {
-                color: var(--sage);
-            }
-            nav {
-                display: flex;
-                gap: 32px;
-                color: var(--muted);
-                font-size: 14px;
-            }
-            .bag {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                color: var(--ink);
-                font-size: 14px;
-            }
             .hero {
                 position: relative;
                 flex: 1;
@@ -202,11 +128,6 @@
                 border-radius: 3px;
                 background: #fff;
             }
-            footer {
-                padding: 10px max(20px, env(safe-area-inset-left, 0px)) calc(10px + env(safe-area-inset-bottom, 0px));
-                color: var(--muted);
-                font-size: 12px;
-            }
             @media (max-width: 1023px) {
                 .details {
                     width: min(62%, 520px);
@@ -214,16 +135,6 @@
             }
             /* On a phone the words take the top of the photo and the widget the bottom. */
             @media (max-width: 640px) {
-                .banner span,
-                nav {
-                    display: none;
-                }
-                header {
-                    height: 60px;
-                }
-                .logo {
-                    font-size: 24px;
-                }
                 .hero {
                     min-height: 0;
                 }
@@ -250,10 +161,10 @@
     <body>
         <div class="banner">A little softer. A little slower. <span>Free delivery over €50</span></div>
         <header>
-            <span class="logo">linen<span>&amp;</span>co.</span>
+            <a class="logo" href="./">linen<span>&amp;</span>co.</a>
             <nav aria-label="Shop">
-                <span>Bedding</span>
-                <span>Bath</span>
+                <a href="./" aria-current="page">Bedding</a>
+                <a href="size-guide.html">Size guide</a>
                 <span>Our story</span>
             </nav>
             <span class="bag">

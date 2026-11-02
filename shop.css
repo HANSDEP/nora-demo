@@ -1,0 +1,112 @@
+/* The shop's frame, shared by every page: the banner, the header and the footer, in the same greens and ivory as
+   the widget's Ivory finish. */
+:root {
+    --forest: #314a3b;
+    --banner-ink: #f0f0df;
+    --ivory: #f7f6f0;
+    --ink: #23302a;
+    --muted: #667064;
+    --sage: #758969;
+    --on-photo: #fffef4;
+    --on-photo-soft: rgba(255, 254, 242, 0.8);
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --brand: Manrope, ui-sans-serif, system-ui, sans-serif;
+}
+* {
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--ivory);
+    color: var(--ink);
+    font: 15px/1.55 var(--sans);
+    -webkit-font-smoothing: antialiased;
+}
+/* A page taller than the window must not squeeze the frame: the body is a column exactly as tall as the window. */
+.banner,
+header,
+footer {
+    flex-shrink: 0;
+}
+.banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
+    background: var(--forest);
+    color: var(--banner-ink);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+}
+.banner span {
+    position: absolute;
+    right: max(28px, env(safe-area-inset-right, 0px));
+    opacity: 0.6;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: 72px;
+    padding: 0 max(20px, env(safe-area-inset-right, 0px)) 0 max(20px, env(safe-area-inset-left, 0px));
+    background: var(--ivory);
+}
+.logo {
+    font: 800 28px/1 var(--brand);
+    letter-spacing: -1.5px;
+}
+.logo span {
+    color: var(--sage);
+}
+nav {
+    display: flex;
+    gap: 32px;
+    color: var(--muted);
+    font-size: 14px;
+}
+.bag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    font-size: 14px;
+}
+nav a {
+    color: inherit;
+    text-decoration: none;
+}
+nav a:hover,
+nav a[aria-current="page"] {
+    color: var(--ink);
+}
+.logo {
+    color: inherit;
+    text-decoration: none;
+}
+footer {
+    padding: 10px max(20px, env(safe-area-inset-left, 0px)) calc(10px + env(safe-area-inset-bottom, 0px));
+    color: var(--muted);
+    font-size: 12px;
+}
+@media (max-width: 640px) {
+    .banner span,
+    nav {
+        display: none;
+    }
+    header {
+        height: 60px;
+    }
+    .logo {
+        font-size: 24px;
+    }
+}
